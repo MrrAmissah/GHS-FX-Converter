@@ -1,6 +1,6 @@
 # GHS FX Converter
 
-Real-time Ghana Cedi (GHS) currency converter — live rates, offline cache, zero backend.
+Real-time Ghana Cedi (GHS) currency converter with live rates, offline cache, and zero backend.
 
 **Live demo:** https://ghs-fx-converter.vercel.app  
 
@@ -29,16 +29,16 @@ Real-time Ghana Cedi (GHS) currency converter — live rates, offline cache, zer
 ## Features
 
 - **Live rates** via primary + fallback API with automatic failover
-- **1-hour localStorage cache** — works offline if previously loaded
+- **1-hour localStorage cache** - works offline if previously loaded
 - **Stale badge** when serving cached data, with the cache date
-- **Debounced input** — no flicker on every keystroke
-- **Swap button** — flip from/to in one click
+- **Debounced input** - no flicker on every keystroke
+- **Swap button** - flip from/to in one click
 - **Dark mode** toggle
 - **Mobile-first** responsive layout
 
 ## How Rates Work
 
-Rates are fetched from [fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api) — a free, keyless, 200+ currency API:
+Rates are fetched from [fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api), a free, keyless, 200+ currency API:
 
 - **Primary:** `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/{base}.json`
 - **Fallback:** `https://latest.currency-api.pages.dev/v1/currencies/{base}.json`
@@ -59,7 +59,7 @@ If the primary URL fails, the fallback is tried automatically. Responses are cac
 
 ```bash
 npm install
-npm run dev       # dev server → http://localhost:5173
+npm run dev       # dev server at http://localhost:5173
 npm run build     # production build
 npm run preview   # preview production build
 ```
@@ -70,7 +70,7 @@ npm run preview   # preview production build
 npm run test
 ```
 
-Covers: `convert()` (zero, large, rounding, invalid inputs), `formatMoney()` (USD, GHS, zero, large, unknown codes), `fetchRates()` (primary fetch + cache, fallback, stale cache, error), `getRate()`, and `isCacheStale()`. Fetch is mocked — no network calls in tests.
+Covers: `convert()` (zero, large, rounding, invalid inputs), `formatMoney()` (USD, GHS, zero, large, unknown codes), `fetchRates()` (primary fetch + cache, fallback, stale cache, error), `getRate()`, and `isCacheStale()`. Fetch is mocked so no network calls are made during tests.
 
 ---
 
