@@ -154,7 +154,23 @@ export default function ConverterCard({
           {/* Result */}
           {hasResult && (
             <div className="rounded-xl border border-teal/20 bg-teal-soft px-5 py-4">
-              <p className="mb-1 text-xs font-medium text-teal-dark">Converted amount</p>
+              <div className="mb-2 flex items-center justify-between">
+                <p className="text-xs font-medium text-teal-dark">Converted amount</p>
+                {date && (
+                  <span className={[
+                    'flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium',
+                    isStale
+                      ? 'bg-warn/10 text-warn'
+                      : 'bg-ok/10 text-ok',
+                  ].join(' ')}>
+                    <span className={[
+                      'h-1.5 w-1.5 rounded-full',
+                      isStale ? 'bg-warn' : 'bg-ok',
+                    ].join(' ')} />
+                    {isStale ? 'Cached' : 'Live'} · {date}
+                  </span>
+                )}
+              </div>
               <p className="text-3xl font-bold tabular-nums text-fore">
                 {getCurrencyFlag(to)}{' '}
                 {result!.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
