@@ -2,7 +2,7 @@
 
 Real-time Ghana Cedi (GHS) currency converter — live rates, offline cache, zero backend.
 
-**Live demo:** https://ghs-fx-converter.vercel.app
+**Live demo:** https://ghs-fx-converter.vercel.app  
 
 ![GHS FX Converter preview](./preview.png)
 
