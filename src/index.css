@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Teal/slate fintech palette — light mode defaults */
+  --color-canvas:      #F0F4F8;
+  --color-panel:       #FFFFFF;
+  --color-raised:      #E8EFF5;
+  --color-edge:        #D1DCE8;
+  --color-edge-hi:     #A8BFCF;
+
+  --color-fore:        #0D1F2D;
+  --color-fore-2:      #3D5A6C;
+  --color-fore-3:      #7A96A8;
+
+  --color-teal:        #0D9488;
+  --color-teal-dark:   #0A7268;
+  --color-teal-soft:   #CCFBF1;
+
+  --color-slate:       #334E68;
+  --color-slate-mid:   #627D98;
+
+  --color-ok:          #059669;
+  --color-warn:        #D97706;
+  --color-error:       #DC2626;
+
+  --color-up:          #10B981;
+  --color-down:        #EF4444;
+}
+
+@layer base {
+  html[data-theme="dark"] {
+    --color-canvas:      #0A1520;
+    --color-panel:       #0F1E2E;
+    --color-raised:      #162536;
+    --color-edge:        #243548;
+    --color-edge-hi:     #3A5068;
+
+    --color-fore:        #E2EDF5;
+    --color-fore-2:      #9BBCCC;
+    --color-fore-3:      #5E849A;
+
+    --color-teal:        #2DD4BF;
+    --color-teal-dark:   #14B8A6;
+    --color-teal-soft:   #0D2D28;
+
+    --color-slate:       #90AFC2;
+    --color-slate-mid:   #628298;
+
+    --color-ok:          #34D399;
+    --color-warn:        #FBBF24;
+    --color-error:       #F87171;
+
+    --color-up:          #34D399;
+    --color-down:        #F87171;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { color-scheme: light; }
+  html[data-theme="dark"] { color-scheme: dark; }
+
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-fore);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  input[type="number"] { -moz-appearance: textfield; }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+}
