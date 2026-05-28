@@ -57,7 +57,7 @@ describe('formatMoney', () => {
   })
 
   it('falls back gracefully for non-finite input', () => {
-    expect(formatMoney(Infinity, 'USD')).toBe('—')
+    expect(formatMoney(Infinity, 'USD')).toBe('--')
   })
 
   it('falls back for unknown currency codes', () => {

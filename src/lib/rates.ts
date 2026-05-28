@@ -27,7 +27,7 @@ function writeCache(cache: RatesCache): void {
   try {
     localStorage.setItem(`${CACHE_KEY}_${cache.base.toLowerCase()}`, JSON.stringify(cache))
   } catch {
-    // storage quota — silently ignore
+    // storage quota exceeded, silently ignore
   }
 }
 
@@ -56,7 +56,7 @@ export async function fetchRates(base: string): Promise<RatesCache> {
     }
   }
 
-  // Both URLs failed — return stale cache if available
+  // Both URLs failed, return stale cache if available
   if (cached) return { ...cached, fetchedAt: cached.fetchedAt }
 
   throw lastError

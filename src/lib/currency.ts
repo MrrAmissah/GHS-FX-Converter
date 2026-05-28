@@ -48,7 +48,7 @@ export function getCurrencyFlag(code: string): string {
 }
 
 export function formatMoney(amount: number, currencyCode: string): string {
-  if (!isFinite(amount)) return '—'
+  if (!isFinite(amount)) return '--'
   const code = currencyCode.toUpperCase()
 
   try {

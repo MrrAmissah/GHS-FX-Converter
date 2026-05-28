@@ -35,7 +35,7 @@ export default function CurrencySelect({ value, onChange, label, id }: Props) {
         >
           {SUPPORTED_CURRENCIES.map(code => (
             <option key={code} value={code}>
-              {code} — {getCurrencyName(code)}
+              {code} - {getCurrencyName(code)}
             </option>
           ))}
         </select>

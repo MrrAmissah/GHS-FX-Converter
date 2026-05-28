@@ -3,7 +3,7 @@
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  /* Teal/slate fintech palette — light mode defaults */
+  /* Teal/slate fintech palette, light mode defaults */
   --color-canvas:      #F0F4F8;
   --color-panel:       #FFFFFF;
   --color-raised:      #E8EFF5;
