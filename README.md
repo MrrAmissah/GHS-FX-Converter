@@ -2,7 +2,7 @@
 
 Real-time Ghana Cedi (GHS) currency converter with live rates, offline cache, and zero backend.
 
-**Live demo:** https://ghs-fx-converter.vercel.app  
+**Live demo:** https://ghs-fx-converter.vercel.app
 
 ![GHS FX Converter preview](./preview.png)
 
@@ -29,10 +29,12 @@ Real-time Ghana Cedi (GHS) currency converter with live rates, offline cache, an
 ## Features
 
 - **Live rates** via primary + fallback API with automatic failover
-- **1-hour localStorage cache** - works offline if previously loaded
-- **Stale badge** when serving cached data, with the cache date
-- **Debounced input** - no flicker on every keystroke
-- **Swap button** - flip from/to in one click
+- **Auto-refresh** every hour while the tab is open, and on tab focus if rates are stale
+- **1-hour localStorage cache** - works offline if rates were previously loaded
+- **Live/Cached badge** on the result showing whether rates are fresh or from cache
+- **Debounced input** - no recompute on every keystroke
+- **Swap button** - flip from/to currencies in one click
+- **About modal** - explains the rate fetch flow, supported currencies, and credits
 - **Dark mode** toggle
 - **Mobile-first** responsive layout
 
@@ -43,7 +45,7 @@ Rates are fetched from [fawazahmed0/exchange-api](https://github.com/fawazahmed0
 - **Primary:** `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/{base}.json`
 - **Fallback:** `https://latest.currency-api.pages.dev/v1/currencies/{base}.json`
 
-If the primary URL fails, the fallback is tried automatically. Responses are cached in localStorage for 1 hour. If both URLs fail and a cached entry exists, it is served with a "Cached" badge.
+If the primary URL fails, the fallback is tried automatically. Successful responses are cached in localStorage for 1 hour. If both URLs fail and a cached entry exists, it is served with an amber "Cached" badge. Rates also refresh silently every hour while the tab is open, and whenever you switch back to the tab.
 
 ## Tech Stack
 
@@ -54,14 +56,16 @@ If the primary URL fails, the fallback is tried automatically. Responses are cac
 | TypeScript | Type safety |
 | Tailwind CSS v4 | Styling with custom design tokens |
 | Vitest | Unit testing |
+| Playwright | Automated screenshot script |
 
 ## Run Locally
 
 ```bash
 npm install
-npm run dev       # dev server at http://localhost:5173
-npm run build     # production build
-npm run preview   # preview production build
+npm run dev         # dev server at http://localhost:5173
+npm run build       # production build
+npm run preview     # preview production build
+npm run screenshot  # take a fresh screenshot of the app into preview.png
 ```
 
 ## Tests
@@ -74,7 +78,7 @@ Covers: `convert()` (zero, large, rounding, invalid inputs), `formatMoney()` (US
 
 ---
 
-> **Estimate only.** Rates are provided as-is for reference. Always confirm with your bank or a licensed financial institution for transactions.
+> **Estimate only.** Rates are provided as-is for reference. Always confirm with your bank or a licensed financial institution before making any transactions.
 
 **Rate source credit:** [fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api)
 
