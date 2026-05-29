@@ -88,10 +88,10 @@ export default function ConverterCard({
       {/* Main card */}
       <div className="rounded-2xl border border-edge bg-panel shadow-xl shadow-slate/5">
         {/* Header */}
-        <div className="border-b border-edge px-6 py-5">
+        <div className="border-b border-edge px-4 py-4 sm:px-6 sm:py-5">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal text-white shadow-md shadow-teal/25">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-teal text-white shadow-md shadow-teal/25">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                 <path d="M3 10h14M3 10l3.5-3.5M3 10l3.5 3.5M17 10l-3.5-3.5M17 10l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
@@ -102,7 +102,7 @@ export default function ConverterCard({
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 p-6">
+        <div className="flex flex-col gap-4 p-4 sm:gap-5 sm:p-6">
           {/* Amount input */}
           <div className="flex flex-col gap-1.5">
             <label htmlFor="amount" className="text-xs font-semibold uppercase tracking-wider text-fore-3">
@@ -118,8 +118,8 @@ export default function ConverterCard({
               onChange={e => setAmount(e.target.value)}
               placeholder="0.00"
               className={[
-                'w-full rounded-xl border border-edge bg-canvas px-4 py-3.5',
-                'text-2xl font-bold tabular-nums text-fore placeholder:text-fore-3',
+                'w-full rounded-xl border border-edge bg-canvas px-4 py-3',
+                'text-xl font-bold tabular-nums text-fore placeholder:text-fore-3 sm:text-2xl sm:py-3.5',
                 'outline-none shadow-sm transition-all',
                 'focus:border-teal/60 focus:ring-2 focus:ring-teal/15 focus:bg-panel',
               ].join(' ')}
@@ -127,20 +127,20 @@ export default function ConverterCard({
           </div>
 
           {/* Currency selectors with swap */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-end gap-3">
+          <div className="grid grid-cols-[1fr_36px_1fr] items-end gap-2 sm:grid-cols-[1fr_auto_1fr] sm:gap-3">
             <CurrencySelect id="from" label="From" value={from.toUpperCase()} onChange={setFrom} />
 
             <button
               onClick={swap}
               title="Swap currencies"
               className={[
-                'mb-0.5 flex h-10 w-10 shrink-0 items-center justify-center',
+                'mb-0.5 flex h-9 w-9 shrink-0 items-center justify-center sm:h-10 sm:w-10',
                 'rounded-full border border-edge bg-raised text-fore-2 shadow-sm',
                 'transition-all hover:border-teal/40 hover:bg-teal-soft hover:text-teal',
                 'active:scale-95',
               ].join(' ')}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                 <path d="M2 5h12M10 2l4 3-4 3M14 11H2M6 8l-4 3 4 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
@@ -153,31 +153,29 @@ export default function ConverterCard({
 
           {/* Result */}
           {hasResult && (
-            <div className="rounded-xl border border-teal/20 bg-teal-soft px-5 py-4">
-              <div className="mb-2 flex items-center justify-between">
-                <p className="text-xs font-medium text-teal-dark">Converted amount</p>
+            <div className="rounded-xl border border-teal/20 bg-teal-soft px-4 py-3.5 sm:px-5 sm:py-4">
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <p className="text-xs font-medium text-teal-dark shrink-0">Converted amount</p>
                 {date && (
                   <span className={[
                     'flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium',
-                    isStale
-                      ? 'bg-warn/10 text-warn'
-                      : 'bg-ok/10 text-ok',
+                    isStale ? 'bg-warn/10 text-warn' : 'bg-ok/10 text-ok',
                   ].join(' ')}>
                     <span className={[
-                      'h-1.5 w-1.5 rounded-full',
+                      'h-1.5 w-1.5 shrink-0 rounded-full',
                       isStale ? 'bg-warn' : 'bg-ok',
                     ].join(' ')} />
                     {isStale ? 'Cached' : 'Live'} · {date}
                   </span>
                 )}
               </div>
-              <p className="text-3xl font-bold tabular-nums text-fore">
+              <p className="text-2xl font-bold tabular-nums text-fore sm:text-3xl break-all">
                 {getCurrencyFlag(to)}{' '}
                 {result!.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                {' '}<span className="text-lg text-fore-2">{to.toUpperCase()}</span>
+                {' '}<span className="text-base text-fore-2 sm:text-lg">{to.toUpperCase()}</span>
               </p>
               {rate !== null && (
-                <p className="mt-2 text-xs text-fore-3">
+                <p className="mt-2 text-xs text-fore-3 break-all">
                   {formatRate(from, to, rate)}
                 </p>
               )}

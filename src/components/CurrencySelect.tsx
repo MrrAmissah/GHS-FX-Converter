@@ -19,7 +19,7 @@ export default function CurrencySelect({ value, onChange, label, id }: Props) {
         {label}
       </label>
       <div className="relative">
-        <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-xl leading-none select-none">
+        <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-base leading-none select-none sm:left-3.5 sm:text-xl">
           {getCurrencyFlag(value)}
         </span>
         <select
@@ -27,8 +27,8 @@ export default function CurrencySelect({ value, onChange, label, id }: Props) {
           value={value.toUpperCase()}
           onChange={e => onChange(e.target.value.toLowerCase())}
           className={[
-            'w-full appearance-none rounded-xl border border-edge bg-panel py-3.5 pl-11 pr-9',
-            'text-sm font-semibold text-fore shadow-sm outline-none',
+            'w-full appearance-none rounded-xl border border-edge bg-panel py-3 pl-10 pr-7 sm:py-3.5 sm:pl-11 sm:pr-9',
+            'text-xs font-semibold text-fore shadow-sm outline-none sm:text-sm',
             'transition-all focus:border-teal/60 focus:ring-2 focus:ring-teal/15',
             'hover:border-edge-hi',
           ].join(' ')}
